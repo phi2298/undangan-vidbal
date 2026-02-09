@@ -38,7 +38,7 @@ body::after{
   width:700px;
   height:600px;
   background:url('assets/masjid.png') center/contain no-repeat;
-  opacity:.25;
+  opacity:25;
   pointer-events:none;
   z-index:1;
 }
@@ -71,30 +71,84 @@ section{
 }
 
 /* BUNGA INVITATION */
-.flower-invite{
+.flower-top{
   position:absolute;
-  width:500px;
+  top:0px;              /* tetap di atas */
+  width:300px;
   pointer-events:none;
-  z-index:2;
+  z-index:3;
 }
 
-/* POSISI */
-.flower-invite.top-left{
-  top:0px;
-  left:0px;
+/* POSISI FINAL */
+.flower-top.left{
+  left:-5px;
 }
 
-.flower-invite.top-right{
-  top:0px;
-  right:0px;
+.flower-top.right{
+  right:-5px;
 }
 
 /* RESPONSIVE */
 @media (max-width:768px){
-  .flower-invite{
-    width:130px;
-    top:-10px;
+  .flower-top{
+    width:400px;
+    top:0px;
   }
+}
+
+.flower-top.left{
+  opacity:0;
+  transform:translateX(-20px);
+}
+.flower-top.left.show{
+  opacity:1;
+  transform:translateX(0);
+  transition:all 1.2s ease;
+}
+.flower-top.left.show.float{
+  animation:floatRotate 4s ease-in-out infinite;
+  animation-delay:1.15s;
+}
+
+ .flower-top.right{
+  opacity:0;
+  transform:translateX(20px);
+}
+.flower-top.right.show{
+  opacity:1;
+  transform:translateX(0);
+  transition:all 1.2s ease;
+}
+.flower-top.right.show.float{
+  animation:floatRotate 5s ease-in-out infinite;
+  animation-delay:1.15s; /* tunggu slide selesai */
+}
+
+/* KEYFRAMES */
+@keyframes floatRotate{
+  0%{
+    transform:translateX(0) translateY(0) rotate(0deg);
+  }
+  25%{
+    transform:translateX(0) translateY(-8px) rotate(2deg);
+  }
+  50%{
+    transform:translateX(0) translateY(-14px) rotate(-2deg);
+  }
+  75%{
+    transform:translateX(0) translateY(-8px) rotate(1.5deg);
+  }
+  100%{
+    transform:translateX(0) translateY(0) rotate(0deg);
+  }
+}
+
+.from-left.float-after.show{
+  animation-duration:4s;
+}
+
+.from-right.float-after.show{
+  animation-duration:5s;
 }
 
 /* FRAME CSS */
@@ -159,7 +213,7 @@ section{
   font-weight:500;
   cursor:pointer;
   box-shadow:0 12px 30px rgba(0,0,0,.18);
-  transition:all .35s ease;
+  transition:all 2s ease;
 }
 
 .btn-open.fancy:hover{
@@ -173,6 +227,11 @@ section{
   font-size:40px;
 }
 
+.section-QS{
+  font-family:'Amiri',cursive;
+  font-size:25px;
+  line-height:2.5;
+}
 .section-ayat{
   font-family:'Amiri',serif;
   font-size:18px;
@@ -249,24 +308,30 @@ section{
   transform:translateY(0);
 }
 
-.from-left.float-after.show{
-  animation-duration:4s;
-}
-
-.from-right.float-after.show{
-  animation-duration:5s;
-}
-
-.from-left{
+.fade-up{
   opacity:0;
-  transform:translateX(-120px);
+  transform:translateY(30px);
+  transition:all .9s ease;
+}
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
-.from-left.show{
-  opacity:1;
-  transform:translateX(0);
-  transition:all 1.2s ease;
+.delay-1{transition-delay:.2s}
+.delay-2{transition-delay:.4s}
+.delay-3{transition-delay:.6s}
+.delay-4{transition-delay:.8s}
+
+.fade-soft{
+  opacity:0;
 }
+
+.fade-soft.show{
+  opacity:1;
+  transition:opacity 2s ease;
+}
+
 
 /* RESPONSIVE */
 @media (max-width:768px){
@@ -287,27 +352,27 @@ section{
 
 <!-- ================= HERO ================= -->
 <section class="invitation-hero">
-<img src="assets/flower-top-left.png" class="flower-invite top-left from-left">
-<img src="assets/flower-top-right.png" class="flower-invite top-right from-right">
+<img src="assets/flower-top-left.png" class="flower-top left float">
+<img src="assets/flower-top-right.png" class="flower-top right float">
 
   <div class="css-frame">
 
     <!-- TEKS -->
-    <p class="invitation-small">THE WEDDING OF</p>
+    <p class="invitation-small fade-up delay-1">THE WEDDING OF</p>
 
-    <h1 class="invitation-name">V & I</h1>
+    <h1 class="invitation-name fade-up delay-2">V & I</h1>
 
-    <p class="invitation-script">Saturday, 20 December 2026</p>
+    <p class="invitation-script fade-up delay-3">Saturday, 20 December 2026</p>
 
-    <div class="dear-box">
+    <div class="dear-box fade-up delay-4">
       DEAR:<br><strong>Nama Tamu</strong>
     </div>
 
-    <p class="invitation-note">
+    <p class="invitation-note fade-up delay-4">
       Please be a part of our happiest moment
     </p>
 
-    <button class="btn-open fancy" onclick="openInvite()">
+    <button class="btn-open fancy fade-soft" onclick="openInvite()">
       ✉ Open Invitation
     </button>
 
@@ -330,8 +395,8 @@ section{
 <!-- AYAT -->
 <section>
   <div class="card section-ayat animate">
-    <img src="assets/3d-masjid.png" class="media">
-    <p>QS. Ar-Rum : 21</p>
+    <img src="assets/3d-masjid.png" class="media fade-up">
+    <h2 class="section-QS">QS. Ar-Rum : 21</h2>
 
     <p>وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا</p>
     <p class="arti">
@@ -446,7 +511,9 @@ function openInvite(){
 const obs=new IntersectionObserver(e=>{
   e.forEach(i=>{if(i.isIntersecting)i.target.classList.add("show")})
 },{threshold:.2});
-document.querySelectorAll(".animate").forEach(el=>obs.observe(el));
+document
+.querySelectorAll(".animate, .flower-top, .fade-up, .zoom-in, .slide-left, .slide-right, .fade-soft, .float-after")
+.forEach(el=>obs.observe(el));
 
 
 const weddingDate = new Date("2026-12-20T08:00:00").getTime();
