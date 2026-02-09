@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wedding of Vidia & Iqbal</title>
+
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Great+Vibes&family=Poppins:wght@300;400;500&family=Playfair+Display:wght@400;600&family=Amiri&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --dark:#4a4a4a;
+  --blue:#A7C7E7;
+  --pink:#F6C1CC;
+}
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  color:var(--dark);
+  background:
+    linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)),
+    url('assets/bg-undangan.jpg') center/cover no-repeat fixed;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* MASJID WATERMARK (NON HERO) */
+body::after{
+  content:"";
+  position:fixed;
+  bottom:-80px;
+  left:50%;
+  transform:translateX(-50%);
+  width:700px;
+  height:600px;
+  background:url('assets/masjid.png') center/contain no-repeat;
+  opacity:.25;
+  pointer-events:none;
+  z-index:1;
+}
+
+/* SECTION */
+section{
+  padding:100px 20px;
+  text-align:center;
+  position:relative;
+  z-index:3;
+}
+
+/* CARD */
+.card{
+  max-width:900px;
+  margin:0 auto;
+  padding:80px 30px;
+  background:rgba(255,255,255,.9);
+  border-radius:36px;
+  box-shadow:0 30px 70px rgba(0,0,0,.08);
+}
+
+/* ================= HERO ================= */
+.invitation-hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* FRAME CSS */
+.css-frame{
+  width:420px;
+  max-width:90%;
+  background:#cfe3ee;                 /* serenity blue */
+  border:4px solid #f2c6cf;            /* serenity pink */
+  border-radius:220px 220px 40px 40px; /* oval atas */
+  padding:90px 40px 70px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 30px 70px rgba(0,0,0,.15);
+}
+
+/* TEXT */
+.invitation-name{
+  font-family:'Great Vibes', cursive;
+  font-size:48px;
+  margin:18px 0;
+}
+
+.invitation-small{
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.invitation-script{
+  font-style:italic;
+  font-size:14px;
+}
+
+.dear-box{
+  margin:22px 0;
+  font-size:14px;
+}
+
+.invitation-note{
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .css-frame{
+    width:280px;
+    padding:70px 26px 60px;
+  }
+
+  .invitation-name{
+    font-size:38px;
+  }
+}
+
+.btn-open.fancy{
+  background:linear-gradient(135deg,#7faedc,#f4b6c2);
+  color:#fff;
+  border:none;
+  padding:14px 34px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:500;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+  transition:all .35s ease;
+}
+
+.btn-open.fancy:hover{
+  transform:translateY(-3px);
+  box-shadow:0 18px 40px rgba(0,0,0,.25);
+}
+
+/* ================= CONTENT ================= */
+.section-title{
+  font-family:'Parisienne',cursive;
+  font-size:40px;
+}
+
+.section-ayat{
+  font-family:'Amiri',serif;
+  font-size:18px;
+  line-height:1.9;
+}
+.section-ayat .arti{
+  font-family:'Poppins',sans-serif;
+  font-style:italic;
+  margin-top:20px;
+}
+
+.nama-pengantin{
+  font-family:'Parisienne',cursive;
+  font-size:40px;
+}
+.nama-orangtua{font-size:16px;line-height:1.8}
+.separator{margin:40px 0;font-size:22px}
+
+.photo-mempelai{
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:50%;
+  margin:0 auto 20px;
+  display:block;
+  box-shadow:0 15px 35px rgba(0,0,0,.18);
+  border:4px solid #fff;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .photo-mempelai{
+    width:110px;
+    height:110px;
+  }
+}
+
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+.time-box{
+  background:linear-gradient(135deg,var(--blue),var(--pink));
+  color:#fff;
+  padding:18px;
+  border-radius:20px;
+  width:110px;
+}
+
+/* MEDIA */
+.media{
+  width:500px;
+  margin:40px auto;
+}
+
+.wedding-image{
+  width:410px;
+  max-width:100%;
+  margin:0 auto 100px;
+}
+
+/* WRAPPER FOTO */
+.photo-wrapper{
+  position:relative;
+  width:190px;
+  height:190px;
+  margin:0 auto 20px;
+}
+
+/* FRAME WATERCOLOR */
+.frame-watercolor{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  pointer-events:none;
+}
+
+/* FOTO OVAL */
+.photo-oval{
+  position:absolute;
+  inset:12px;
+  width:calc(100% - 24px);
+  height:calc(100% - 24px);
+  object-fit:cover;
+  border-radius:50%;
+  z-index:2;
+  box-shadow:0 18px 35px rgba(0,0,0,.18);
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .photo-wrapper{
+    width:150px;
+    height:150px;
+  }
+}
+
+/* ANIMASI */
+.animate{
+  opacity:0;
+  transform:translateY(40px);
+  transition:.9s ease;
+}
+.animate.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.animate-zoom{
+  opacity:0;
+  transform:scale(.9) translateY(20px);
+  transition:all 1s ease;
+}
+
+.animate-zoom.show{
+  opacity:1;
+  transform:scale(1) translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .oval-wrapper{width:260px}
+  .invitation-name{font-size:38px}
+  .section-title{font-size:32px}
+  .nama-pengantin{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIK -->
+<audio id="music" loop>
+  <source src="music/wedding.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ================= HERO ================= -->
+<section class="invitation-hero">
+
+  <div class="css-frame">
+
+    <!-- TEKS -->
+    <p class="invitation-small">THE WEDDING OF</p>
+
+    <h1 class="invitation-name">Vidia & Iqbal</h1>
+
+    <p class="invitation-script">Saturday, 12 October 2026</p>
+
+    <div class="dear-box">
+      DEAR:<br><strong>Nama Tamu</strong>
+    </div>
+
+    <p class="invitation-note">
+      Please be a part of our happiest moment
+    </p>
+
+    <button class="btn-open fancy" onclick="openInvite()">
+      ✉ Open Invitation
+    </button>
+
+  </div>
+
+</section>
+
+<div id="main">
+
+<!-- THE WEDDING -->
+<section>
+  <div class="card animate">
+    <p style="letter-spacing:4px">THE WEDDING OF</p>
+    <h2 class="section-title">V & I</h2>
+    <p>Dengan memohon rahmat dan ridho Allah SWT</p>
+    <img src="assets/wedding.png" class="wedding-image animate">
+  </div>
+</section>
+
+<!-- AYAT -->
+<section>
+  <div class="card section-ayat animate">
+    <img src="assets/3d-masjid.png" class="media">
+    <p>QS. Ar-Rum : 21</p>
+    <p>وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا</p>
+    <p class="arti">
+      “Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan hidup
+      agar kamu merasa tenteram dan Dia menjadikan kasih dan sayang.”
+    </p>
+  </div>
+</section>
+
+<!-- MEMPELAI -->
+<section>
+  <div class="card">
+
+    <!-- MEMPELAI WANITA -->
+    <div class="photo-wrapper animate-zoom">
+      <img src="assets/frame-watercolor.png" class="frame-watercolor">
+      <img src="assets/photo-bride.png" class="photo-oval">
+    </div>
+
+    <h2 class="nama-pengantin">Vidia Gholiyati</h2>
+    <p class="nama-orangtua">
+      Putri dari Ibu Eni Rohatun<br>& Bapak Pitoyo
+    </p>
+
+    <div class="separator">🤍🤍🤍</div>
+
+    <!-- MEMPELAI PRIA -->
+    <div class="photo-wrapper animate-zoom">
+      <img src="assets/frame-watercolor.png" class="frame-watercolor">
+      <img src="assets/photo-groom.png" class="photo-oval">
+    </div>
+
+    <h2 class="nama-pengantin">Muhammad Iqbal Firdaus</h2>
+    <p class="nama-orangtua">
+      Putra dari Ibu Titi Utami<br>& Bapak Sopyan Sauri
+    </p>
+
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section>
+  <div class="card animate">
+    <h2 class="section-title">Menuju Hari Bahagia</h2>
+
+    <div class="countdown">
+      <div class="time-box">
+        <h3 id="days">0</h3>
+        <small>Hari</small>
+      </div>
+      <div class="time-box">
+        <h3 id="hours">0</h3>
+        <small>Jam</small>
+      </div>
+      <div class="time-box">
+        <h3 id="minutes">0</h3>
+        <small>Menit</small>
+      </div>
+      <div class="time-box">
+        <h3 id="seconds">0</h3>
+        <small>Detik</small>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AKAD -->
+<section>
+  <div class="card animate">
+    <h2 class="section-title">Akad Nikah</h2>
+    <p>Sabtu, 12 Oktober 2026<br>Pukul 08.00 WIB</p>
+  </div>
+</section>
+
+<!-- RESEPSI -->
+<section>
+  <div class="card animate">
+    <h2 class="section-title">Resepsi</h2>
+    <p>Sabtu, 12 Oktober 2026<br>Pukul 11.00 – 14.00 WIB</p>
+  </div>
+</section>
+
+<!-- LOVE STORY -->
+<section>
+  <div class="card animate">
+    <h2 class="section-title">Our Love Story</h2>
+    <img src="assets/prewedding.jpg" class="media">
+    <p class="story-text">
+      Berawal dari pertemuan sederhana, kami belajar saling mengenal hingga Allah
+      mempersatukan kami dalam ikatan suci pernikahan.
+    </p>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section>
+  <div class="card animate">
+    <h2 class="section-title">Reservasi Kehadiran</h2>
+    <input placeholder="Nama"><br><br>
+    <input placeholder="Jumlah Hadir"><br><br>
+    <textarea placeholder="Ucapan & Doa"></textarea><br><br>
+    <button>Kirim</button>
+  </div>
+</section>
+
+<!-- AMPLOP -->
+<section>
+  <div class="card animate">
+    <h2 class="section-title">Amplop Digital</h2>
+    <p>BCA 123456789<br>a.n Vidia Gholiyati</p>
+  </div>
+</section>
+
+<!-- TERIMAKASIH -->
+<section>
+  <div class="card animate">
+    <p>Terima kasih atas doa dan restu yang diberikan</p>
+    <h2 class="section-title">Vidia & Iqbal</h2>
+  </div>
+</section>
+
+</div>
+
+<script>
+function openInvite(){
+  document.getElementById('music').play();
+  document.getElementById('main').scrollIntoView({behavior:'smooth'});
+}
+
+const obs=new IntersectionObserver(e=>{
+  e.forEach(i=>{if(i.isIntersecting)i.target.classList.add("show")})
+},{threshold:.2});
+document.querySelectorAll(".animate").forEach(el=>obs.observe(el));
+
+
+const weddingDate = new Date("2026-10-12T08:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+
+  if (distance < 0) return;
+
+  document.getElementById("days").innerHTML =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+  document.getElementById("hours").innerHTML =
+    Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  document.getElementById("minutes").innerHTML =
+    Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  document.getElementById("seconds").innerHTML =
+    Math.floor((distance % (1000 * 60)) / 1000);
+}, 1000);
+</script>
+
+</body>
+</html>
