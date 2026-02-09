@@ -63,10 +63,38 @@ section{
 
 /* ================= HERO ================= */
 .invitation-hero{
+  position:relative;
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
+}
+
+/* BUNGA INVITATION */
+.flower-invite{
+  position:absolute;
+  width:500px;
+  pointer-events:none;
+  z-index:2;
+}
+
+/* POSISI */
+.flower-invite.top-left{
+  top:0px;
+  left:0px;
+}
+
+.flower-invite.top-right{
+  top:0px;
+  right:0px;
+}
+
+/* RESPONSIVE */
+@media (max-width:768px){
+  .flower-invite{
+    width:130px;
+    top:-10px;
+  }
 }
 
 /* FRAME CSS */
@@ -200,7 +228,7 @@ section{
 
 /* MEDIA */
 .media{
-  width:200px;
+  width:300px;
   margin:40px auto;
 }
 
@@ -219,6 +247,25 @@ section{
 .animate.show{
   opacity:1;
   transform:translateY(0);
+}
+
+.from-left.float-after.show{
+  animation-duration:4s;
+}
+
+.from-right.float-after.show{
+  animation-duration:5s;
+}
+
+.from-left{
+  opacity:0;
+  transform:translateX(-120px);
+}
+
+.from-left.show{
+  opacity:1;
+  transform:translateX(0);
+  transition:all 1.2s ease;
 }
 
 /* RESPONSIVE */
@@ -240,6 +287,8 @@ section{
 
 <!-- ================= HERO ================= -->
 <section class="invitation-hero">
+<img src="assets/flower-top-left.png" class="flower-invite top-left from-left">
+<img src="assets/flower-top-right.png" class="flower-invite top-right from-right">
 
   <div class="css-frame">
 
